@@ -1,0 +1,61 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "name": "shophub-ecommerce",
+    "version": "1.0.0",
+    "description": "Modern Laravel E-Commerce Platform",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "build:prod": "NODE_ENV=production vite build",
+        "preview": "vite preview",
+        "optimize": "npm run build && npm run minify",
+        "minify": "postcss resources/css/app.css -o public/css/app.min.css --use postcss-clean",
+        "watch": "concurrently \"npm run dev\" \"php artisan serve\"",
+        "fresh": "php artisan migrate:fresh --seed",
+        "test": "php artisan test",
+        "test:coverage": "php artisan test --coverage",
+        "lint": "eslint resources/js",
+        "lint:fix": "eslint resources/js --fix",
+        "format": "prettier --write resources/**/*.{js,vue,css}",
+        "optimize-images": "imagemin resources/images/* --out=public/images --plugin=pngquant --plugin=jpegoptim-recompress",
+        "analyze": "php artisan about",
+        "deploy": "./deploy.sh",
+        "backup": "php artisan backup:run",
+        "cache:clear": "php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear",
+        "cache:warm": "php artisan cache:warm",
+        "optimize:prod": "composer install --no-dev --prefer-dist --optimize-autoloader && npm run build:prod"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.11",
+        "@tailwindcss/vite": "^4.0.0",
+        "@vitejs/plugin-laravel": "^2.0.0",
+        "axios": "^1.11.0",
+        "concurrently": "^9.0.1",
+        "tailwindcss": "^4.0.0",
+        "vite": "^7.0.7",
+        "postcss": "^8.4.47",
+        "postcss-clean": "^1.2.3",
+        "autoprefixer": "^10.4.20",
+        "prettier": "^3.3.3",
+        "eslint": "^9.15.0",
+        "imagemin-cli": "^8.0.0",
+        "imagemin-pngquant": "^10.0.0",
+        "imagemin-jpegoptim-recompress": "^9.0.0"
+    },
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0"
+    },
+    "keywords": [
+        "laravel",
+        "ecommerce",
+        "vue",
+        "tailwindcss",
+        "vite",
+        "php"
+    ],
+    "author": "ShopHub Team",
+    "license": "MIT"
+}
